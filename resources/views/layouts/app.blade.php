@@ -23,10 +23,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Invoices</a>
+                        <a class="nav-link" aria-current="page" href="#">Invoices</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Items</a>
+                        <a class="nav-link @if (request()->routeIs('items.*')) active @endif"
+                            href="{{ route('items.index') }}">Items</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Sales Return</a>
