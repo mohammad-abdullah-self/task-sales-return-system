@@ -14,7 +14,9 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg bg-white border-bottom">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Sales Return System</a>
+            <a class="navbar-brand" href="/">
+                Sales Return System
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -23,7 +25,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Invoices</a>
+                        <a class="nav-link @if (request()->routeIs('invoices.*')) active @endif"
+                            href="{{ route('invoices.index') }}">Invoices</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link @if (request()->routeIs('items.*')) active @endif"
@@ -33,13 +36,14 @@
                         <a class="nav-link" href="#">Sales Return</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle @if (request()->routeIs('reports.*')) active @endif"
+                            href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Reports
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Return Reports</a></li>
-                            <li><a class="dropdown-item" href="#">Stock Reports</a></li>
+                            <li><a class="dropdown-item @if (request()->routeIs('reports.stock')) active @endif"
+                                    href="{{ route('reports.stock') }}">Stock Report</a></li>
                         </ul>
                     </li>
 
@@ -52,12 +56,6 @@
     <main class="container p-4">
         @yield('content')
     </main>
-
-    <footer class="border-top bg-white">
-        <div class="container py-4 text-secondary small">
-            Built on Laravel {{ app()->version() }}
-        </div>
-    </footer>
 
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 </body>
