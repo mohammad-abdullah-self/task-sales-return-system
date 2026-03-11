@@ -11,6 +11,7 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::query()
             ->withCount('invoiceItems')
+            ->with('salesReturn')
             ->when($request->filled('customer'), function ($query) use ($request) {
                 $customer = $request->string('customer')->toString();
                 $query->where('customer_name', 'like', "%{$customer}%");
@@ -28,7 +29,7 @@ class InvoiceController extends Controller
 
     public function show(Invoice $invoice)
     {
-        $invoice->load(['invoiceItems.item']);
+        $invoice->load(['invoiceItems.item', 'salesReturn']);
 
         return view('invoices.show', [
             'invoice' => $invoice,

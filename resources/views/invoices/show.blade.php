@@ -10,6 +10,19 @@
                 <span class="text-secondary">·</span> {{ $invoice->invoice_date?->format('Y-m-d H:i') }}
             </div>
         </div>
+        <div class="d-flex align-items-center gap-2">
+            <a class="btn btn-outline-secondary" href="{{ route('invoices.index') }}">Back to list</a>
+
+            @if ($invoice->salesReturn)
+                <a class="btn btn-dark" href="{{ route('sales-returns.show', $invoice->salesReturn) }}">
+                    View return ({{ $invoice->salesReturn->return_number }})
+                </a>
+            @else
+                <a class="btn btn-dark" href="{{ route('sales-returns.create', ['invoice_id' => $invoice->id]) }}">
+                    Create sales return
+                </a>
+            @endif
+        </div>
     </div>
 
     <div class="row g-3 mb-4">

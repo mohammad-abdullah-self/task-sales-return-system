@@ -39,6 +39,7 @@
                         <th>Items</th>
                         <th>Total</th>
                         <th>Status</th>
+                        <th>Return</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +58,17 @@
                                     {{ $invoice->status }}
                                 </span>
                             </td>
-
+                            <td>
+                                @if ($invoice->salesReturn)
+                                    <a class="link-dark"
+                                        href="{{ route('sales-returns.show', $invoice->salesReturn) }}">{{ $invoice->salesReturn->return_number }}</a>
+                                @else
+                                    <a class="btn btn-dark btn-sm"
+                                        href="{{ route('sales-returns.create', ['invoice_id' => $invoice->id]) }}">
+                                        Create return
+                                    </a>
+                                @endif
+                            </td>
                         </tr>
                     @empty
                         <tr>

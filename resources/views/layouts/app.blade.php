@@ -33,7 +33,8 @@
                             href="{{ route('items.index') }}">Items</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sales Return</a>
+                        <a class="nav-link @if (request()->routeIs('sales-returns.*')) active @endif"
+                            href="{{ route('sales-returns.index') }}">Sales Returns</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle @if (request()->routeIs('reports.*')) active @endif"
@@ -54,6 +55,23 @@
     </nav>
 
     <main class="container p-4">
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <div class="fw-semibold mb-1">Please fix the following:</div>
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         @yield('content')
     </main>
 
