@@ -16,7 +16,7 @@
                     <select name="invoice_id" class="form-select" onchange="this.form.submit()">
                         <option value="">-- Choose invoice --</option>
                         @foreach ($invoices as $inv)
-                            <option value="{{ $inv->id }}" @selected(request('invoice_id') === $inv->id)>
+                            <option value="{{ $inv->id }}" @selected((int) request('invoice_id') === $inv->id)>
                                 #{{ $inv->id }} · {{ $inv->customer_name }} ·
                                 {{ $inv->invoice_date->format('Y-m-d') }} ·
                                 {{ number_format((float) $inv->total_amount, 2) }}

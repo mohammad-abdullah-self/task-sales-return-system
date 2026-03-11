@@ -23,7 +23,7 @@ class Invoice extends Model
     ];
 
     protected $casts = [
-        'id' => 'string',
+        'id' => 'integer',
         'customer_name' => 'string',
         'invoice_date' => 'datetime',
         'taxable_amount' => 'decimal:2',

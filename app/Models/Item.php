@@ -19,7 +19,7 @@ class Item extends Model
     ];
 
     protected $casts = [
-        'id' => 'string',
+        'id' => 'integer',
         'name' => 'string',
         'sku' => 'string',
         'stock' => 'integer',

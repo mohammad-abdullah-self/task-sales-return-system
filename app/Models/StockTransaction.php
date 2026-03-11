@@ -22,10 +22,10 @@ class StockTransaction extends Model
     ];
 
     protected $casts = [
-        'id' => 'string',
-        'item_id' => 'string',
+        'id' => 'integer',
+        'item_id' => 'integer',
         'type' => 'string',
-        'reference_id' => 'string',
+        'reference_id' => 'integer',
         'quantity' => 'integer',
         'stock_effect' => 'integer',
         'created_at' => 'datetime',

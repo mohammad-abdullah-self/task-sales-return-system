@@ -21,9 +21,9 @@ class SalesReturn extends Model
     ];
 
     protected $casts = [
-        'id' => 'string',
+        'id' => 'integer',
         'return_number' => 'string',
-        'invoice_id' => 'string',
+        'invoice_id' => 'integer',
         'return_date' => 'datetime',
         'taxable_amount' => 'decimal:2',
         'discount_amount' => 'decimal:2',

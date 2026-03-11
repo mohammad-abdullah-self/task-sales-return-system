@@ -21,11 +21,11 @@ class SalesReturnItem extends Model
     ];
 
     protected $casts = [
-        'id' => 'string',
-        'sales_return_id' => 'string',
-        'invoice_id' => 'string',
-        'invoice_item_id' => 'string',
-        'item_id' => 'string',
+        'id' => 'integer',
+        'sales_return_id' => 'integer',
+        'invoice_id' => 'integer',
+        'invoice_item_id' => 'integer',
+        'item_id' => 'integer',
         'quantity' => 'integer',
         'unit_price' => 'decimal:2',
         'taxable_price' => 'decimal:2',
