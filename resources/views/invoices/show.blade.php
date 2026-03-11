@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Invoice Details |')
+
 @section('content')
     <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between gap-3 mb-4">
         <div>
-            <div class="text-secondary small">Invoice</div>
+            <div class="text-secondary small">Invoice Details</div>
             <h1 class="h4 mb-1">#{{ $invoice->id }}</h1>
             <div class="text-secondary">
                 <span class="fw-semibold text-body">{{ $invoice->customer_name }}</span>

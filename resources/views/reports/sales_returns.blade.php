@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Sales Returns Report |')
+
 @section('content')
     <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-4">
         <div>
-            <h1 class="h4 mb-1">Sale Return Report</h1>
+            <h1 class="h4 mb-1">Sales Returns Report</h1>
         </div>
     </div>
 

@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'Sales Returns Details |')
+
 @section('content')
     <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between gap-3 mb-4">
         <div>
-            <div class="text-secondary small">Sales Return</div>
+            <div class="text-secondary small">Sales Return Details</div>
             <h1 class="h4 mb-1">{{ $salesReturn->return_number }}</h1>
             <div class="text-secondary">
                 Invoice <a class="link-dark"

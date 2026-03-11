@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Create Sales Return |')
+
 @section('content')
     <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-4">
         <div>

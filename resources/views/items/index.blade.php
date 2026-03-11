@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Items |')
+
 @section('content')
     <div class="d-flex align-items-end justify-content-between gap-3 mb-4">
         <div>
