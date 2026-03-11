@@ -42,7 +42,8 @@
                             Reports
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Return Reports</a></li>
+                            <li><a class="dropdown-item @if (request()->routeIs('reports.sales-returns')) active @endif"
+                                    href="{{ route('reports.sales-returns') }}">Return Report</a></li>
                             <li><a class="dropdown-item @if (request()->routeIs('reports.stock')) active @endif"
                                     href="{{ route('reports.stock') }}">Stock Report</a></li>
                         </ul>

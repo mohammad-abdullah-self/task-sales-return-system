@@ -21,3 +21,5 @@ Route::get('/sales-returns', [SalesReturnController::class, 'index'])->name('sal
 Route::get('/sales-returns/create', [SalesReturnController::class, 'create'])->name('sales-returns.create');
 Route::post('/sales-returns', [SalesReturnController::class, 'store'])->name('sales-returns.store');
 Route::get('/sales-returns/{salesReturn}', [SalesReturnController::class, 'show'])->name('sales-returns.show');
+
+Route::get('/reports/sales-returns', [ReportController::class, 'salesReturns'])->name('reports.sales-returns');

@@ -3,23 +3,15 @@
 @section('content')
     <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-4">
         <div>
-            <h1 class="h4 mb-1">Sales Returns</h1>
+            <h1 class="h4 mb-1">Sale Return Report</h1>
         </div>
-
-        <a class="btn btn-dark" href="{{ route('sales-returns.create') }}">
-            Create sales return
-        </a>
     </div>
 
-    <form class="mb-3" method="get" action="{{ route('sales-returns.index') }}">
+    <form class="mb-3" method="get" action="{{ route('reports.sales-returns') }}">
         <div class="row g-2 align-items-end">
             <div class="col-12 col-md-auto">
                 <label class="form-label small text-secondary mb-1">Customer</label>
                 <input name="customer" value="{{ request('customer') }}" class="form-control form-control-sm" />
-            </div>
-            <div class="col-12 col-md-auto">
-                <label class="form-label small text-secondary mb-1">Invoice No</label>
-                <input name="invoice_id" value="{{ request('invoice_id') }}" class="form-control form-control-sm" />
             </div>
             <div class="col-12 col-md-auto">
                 <label class="form-label small text-secondary mb-1">Start date</label>
@@ -51,32 +43,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($salesReturns as $sr)
+                    @forelse ($rows as $row)
                         <tr>
                             <td class="fw-semibold">
                                 <a class="link-dark"
-                                    href="{{ route('sales-returns.show', $sr) }}">{{ $sr->return_number }}</a>
+                                    href="{{ route('sales-returns.show', $row) }}">{{ $row->return_number }}</a>
                             </td>
                             <td>
                                 <a class="link-dark"
-                                    href="{{ route('invoices.show', $sr->invoice) }}">#{{ $sr->invoice_id }}</a>
+                                    href="{{ route('invoices.show', $row->invoice) }}">#{{ $row->invoice_id }}</a>
                             </td>
-                            <td>{{ $sr->invoice->customer_name ?? '-' }}</td>
-                            <td>{{ $sr->return_date->format('Y-m-d H:i') }}</td>
-                            <td>{{ $sr->refund_method }}</td>
-                            <td>{{ number_format((float) $sr->total_amount, 2) }}</td>
+                            <td>{{ $row->invoice->customer_name ?? '-' }}</td>
+                            <td>{{ $row->return_date->format('Y-m-d H:i') }}</td>
+                            <td>{{ $row->refund_method }}</td>
+                            <td>{{ number_format((float) $row->total_amount, 2) }}</td>
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-center text-secondary py-5" colspan="6">No sales returns found.</td>
+                            <td class="text-center text-secondary py-5" colspan="5">No returns found.</td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
-    </div>
-
-    <div class="mt-3">
-        {{ $salesReturns->links() }}
     </div>
 @endsection

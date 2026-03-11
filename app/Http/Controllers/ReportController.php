@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\SalesReturn;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -63,6 +64,27 @@ class ReportController extends Controller
             'start' => $start,
             'end' => $end,
             'report' => $report,
+        ]);
+    }
+
+    public function salesReturns(Request $request)
+    {
+        $rows = SalesReturn::query()->with('invoice')
+            ->when($request->filled('customer'), function ($query) use ($request) {
+                $customer = $request->string('customer')->toString();
+                $query->whereHas('invoice', fn ($q) => $q->where('customer_name', 'like', "%{$customer}%"));
+            })
+            ->when($request->filled('start_date'), function ($query) use ($request) {
+                $query->where('return_date', '>=', $request->date('start_date')->startOfDay());
+            })
+            ->when($request->filled('end_date'), function ($query) use ($request) {
+                $query->where('return_date', '<=', $request->date('end_date')->endOfDay());
+            })
+            ->orderByDesc('return_date')
+            ->get();
+
+        return view('reports.sales_returns', [
+            'rows' => $rows,
         ]);
     }
 }
