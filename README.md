@@ -18,6 +18,8 @@ Follow these steps to run the project:
 ### 1. Install PHP Dependencies
 
 ```bash
+git clone https://github.com/mohammad-abdullah-self/task-sales-return-system.git
+cd task-sales-return-system
 composer install
 ./vendor/bin/sail up -d
 bun install
