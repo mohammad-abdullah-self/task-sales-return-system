@@ -1,0 +1,25 @@
+{
+    "agents": [
+        "claude_code",
+        "codex",
+        "cursor",
+        "opencode",
+        "copilot"
+    ],
+    "cloud": true,
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch": false,
+    "packages": [
+        "fruitcake/laravel-debugbar"
+    ],
+    "sail": true,
+    "skills": [
+        "infer-conventions",
+        "deploying-to-cloud",
+        "laravel-best-practices",
+        "testing-best-practices",
+        "tailwindcss-development",
+        "debug-using-debugbar"
+    ]
+}

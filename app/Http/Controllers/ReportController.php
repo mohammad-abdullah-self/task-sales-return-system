@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\SalesReturn;
+use App\Services\Inventory\DemandForecastService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -85,6 +86,17 @@ class ReportController extends Controller
 
         return view('reports.sales_returns', [
             'rows' => $rows,
+        ]);
+    }
+
+    public function aiStock(Request $request, DemandForecastService $forecasts)
+    {
+        $insights = $forecasts->insights($request->boolean('refresh'));
+
+        return view('reports.ai_stock', [
+            'rows' => $insights['rows'],
+            'source' => $insights['source'],
+            'notice' => $insights['notice'],
         ]);
     }
 }

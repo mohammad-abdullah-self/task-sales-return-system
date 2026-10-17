@@ -17,15 +17,20 @@ class InvoiceSeeder extends Seeder
     public function run(): void
     {
         $items = Item::query()->orderBy('id')->get();
+        $lowStockItem = $items->first();
 
-        DB::transaction(function () use ($items) {
+        DB::transaction(function () use ($items, $lowStockItem) {
             Invoice::factory()
-                ->count(5)
+                ->count(15)
                 ->make()
-                ->each(function (Invoice $invoice) use ($items) {
+                ->each(function (Invoice $invoice) use ($items, $lowStockItem) {
                     $invoice->save();
 
-                    $picked = $items->random(mt_rand(2, 3))->values();
+                    $others = $items->where('id', '!=', $lowStockItem->id)->values();
+                    $picked = collect([$lowStockItem])
+                        ->concat($others->random(min($others->count(), mt_rand(1, 2))))
+                        ->unique('id')
+                        ->values();
 
                     $taxableTotal = 0.0;
                     $discountTotal = 0.0;
@@ -33,10 +38,11 @@ class InvoiceSeeder extends Seeder
                     $grandTotal = 0.0;
 
                     foreach ($picked as $item) {
-                        $qty = mt_rand(1, 5);
+                        $qty = $item->id === $lowStockItem->id ? mt_rand(3, 8) : mt_rand(1, 5);
 
                         if ($item->stock < $qty) {
                             $item->stock = $qty + mt_rand(10, 50);
+                            $item->save();
                         }
 
                         $unitPrice = (float) $item->price;
@@ -83,6 +89,9 @@ class InvoiceSeeder extends Seeder
                         'total_amount' => round($grandTotal, 2),
                     ]);
                 });
+
+            $lowStockItem->refresh();
+            $lowStockItem->update(['stock' => 2]);
         });
     }
 }

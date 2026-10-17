@@ -16,6 +16,7 @@ Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.ind
 Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])->name('invoices.show');
 
 Route::get('/reports/stock', [ReportController::class, 'stock'])->name('reports.stock');
+Route::get('/reports/ai-stock', [ReportController::class, 'aiStock'])->name('reports.ai-stock');
 
 Route::get('/sales-returns', [SalesReturnController::class, 'index'])->name('sales-returns.index');
 Route::get('/sales-returns/create', [SalesReturnController::class, 'create'])->name('sales-returns.create');

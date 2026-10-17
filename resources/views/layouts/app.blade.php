@@ -71,6 +71,12 @@
                                     href="{{ route('reports.stock') }}"
                                 >Stock Report</a>
                             </li>
+                            <li>
+                                <a
+                                    class="dropdown-item @if (request()->routeIs('reports.ai-stock')) active @endif"
+                                    href="{{ route('reports.ai-stock') }}"
+                                >AI Stock Insights</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
