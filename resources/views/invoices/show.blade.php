@@ -3,7 +3,7 @@
 @section('title', 'Invoice Details |')
 
 @section('content')
-    <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between gap-3 mb-4">
+    <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between mb-4 gap-3">
         <div>
             <div class="text-secondary small">Invoice Details</div>
             <h1 class="h4 mb-1">#{{ $invoice->id }}</h1>
@@ -28,7 +28,7 @@
     </div>
 
     <div class="row g-3 mb-4">
-        <div class="col-12 col-lg-4">
+        <div class="col-lg-4 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-secondary small">Taxable</div>
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-lg-4 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-secondary small">Discount</div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4">
+        <div class="col-lg-4 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-secondary small">Total</div>
@@ -56,7 +56,7 @@
 
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle mb-0">
+            <table class="table-striped table-hover mb-0 table align-middle">
                 <thead class="table-light">
                     <tr>
                         <th>Item</th>
@@ -76,8 +76,7 @@
                             </td>
                             <td>{{ $line->quantity }}</td>
                             <td>{{ number_format((float) $line->unit_price, 2) }}</td>
-                            <td>{{ rtrim(rtrim(number_format((float) $line->tax_rate, 4), '0'), '.') }}%
-                            </td>
+                            <td>{{ rtrim(rtrim(number_format((float) $line->tax_rate, 4), '0'), '.') }}%</td>
                             <td>{{ number_format((float) $line->discount, 2) }}</td>
                             <td>{{ number_format((float) $line->total, 2) }}</td>
                         </tr>

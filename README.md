@@ -6,9 +6,9 @@ This document explains how to run the project locally.
 
 Make sure the following software versions are installed on your system:
 
-- PHP: **8.4.1**
+- PHP: **8.4**
 - Composer: **2.8.12**
-- Bun: **1.3.10**
+- Bun: **1.4**
 - Docker: **29.3.0**
 
 ## Installation Steps

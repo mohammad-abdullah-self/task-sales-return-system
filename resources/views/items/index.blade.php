@@ -3,7 +3,7 @@
 @section('title', 'Items |')
 
 @section('content')
-    <div class="d-flex align-items-end justify-content-between gap-3 mb-4">
+    <div class="d-flex align-items-end justify-content-between mb-4 gap-3">
         <div>
             <h1 class="h4 mb-1">Items</h1>
             <div class="text-secondary">Current stock and default sale prices.</div>
@@ -12,7 +12,7 @@
 
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle mb-0">
+            <table class="table-striped table-hover mb-0 table align-middle">
                 <thead class="table-light">
                     <tr>
                         <th>Item</th>
@@ -31,7 +31,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-center text-secondary py-5" colspan="4">No items found.</td>
+                            <td class="text-secondary py-5 text-center" colspan="4">No items found.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -39,7 +39,5 @@
         </div>
     </div>
 
-    <div class="mt-3">
-        {{ $items->links() }}
-    </div>
+    <div class="mt-3">{{ $items->links() }}</div>
 @endsection

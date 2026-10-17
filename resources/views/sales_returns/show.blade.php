@@ -3,13 +3,14 @@
 @section('title', 'Sales Returns Details |')
 
 @section('content')
-    <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between gap-3 mb-4">
+    <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-between mb-4 gap-3">
         <div>
             <div class="text-secondary small">Sales Return Details</div>
             <h1 class="h4 mb-1">{{ $salesReturn->return_number }}</h1>
             <div class="text-secondary">
-                Invoice <a class="link-dark"
-                    href="{{ route('invoices.show', $salesReturn->invoice) }}">#{{ $salesReturn->invoice_id }}</a>
+                Invoice
+                <a class="link-dark" href="{{ route('invoices.show', $salesReturn->invoice) }}"
+                    >#{{ $salesReturn->invoice_id }}</a>
                 <span class="text-secondary">·</span> {{ $salesReturn->invoice->customer_name ?? '-' }}
             </div>
             <div class="text-secondary small">
@@ -23,7 +24,7 @@
     </div>
 
     <div class="row g-3 mb-4">
-        <div class="col-12 col-lg-3">
+        <div class="col-lg-3 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-secondary small">Taxable</div>
@@ -31,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-3">
+        <div class="col-lg-3 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-secondary small">Discount</div>
@@ -39,7 +40,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-3">
+        <div class="col-lg-3 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-secondary small">VAT</div>
@@ -47,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-3">
+        <div class="col-lg-3 col-12">
             <div class="card">
                 <div class="card-body">
                     <div class="text-secondary small">Total</div>
@@ -68,7 +69,7 @@
 
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle mb-0">
+            <table class="table-striped table-hover mb-0 table align-middle">
                 <thead class="table-light">
                     <tr>
                         <th>Item</th>

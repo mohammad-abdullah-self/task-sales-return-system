@@ -3,7 +3,7 @@
 @section('title', 'Sales Returns Report |')
 
 @section('content')
-    <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-3 mb-4">
+    <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-4 gap-3">
         <div>
             <h1 class="h4 mb-1">Sales Returns Report</h1>
         </div>
@@ -11,21 +11,29 @@
 
     <form class="mb-3" method="get" action="{{ route('reports.sales-returns') }}">
         <div class="row g-2 align-items-end">
-            <div class="col-12 col-md-auto">
+            <div class="col-md-auto col-12">
                 <label class="form-label small text-secondary mb-1">Customer</label>
                 <input name="customer" value="{{ request('customer') }}" class="form-control form-control-sm" />
             </div>
-            <div class="col-12 col-md-auto">
+            <div class="col-md-auto col-12">
                 <label class="form-label small text-secondary mb-1">Start date</label>
-                <input type="date" name="start_date" value="{{ request('start_date') }}"
-                    class="form-control form-control-sm" />
+                <input
+                    type="date"
+                    name="start_date"
+                    value="{{ request('start_date') }}"
+                    class="form-control form-control-sm"
+                />
             </div>
-            <div class="col-12 col-md-auto">
+            <div class="col-md-auto col-12">
                 <label class="form-label small text-secondary mb-1">End date</label>
-                <input type="date" name="end_date" value="{{ request('end_date') }}"
-                    class="form-control form-control-sm" />
+                <input
+                    type="date"
+                    name="end_date"
+                    value="{{ request('end_date') }}"
+                    class="form-control form-control-sm"
+                />
             </div>
-            <div class="col-12 col-md-auto">
+            <div class="col-md-auto col-12">
                 <button class="btn btn-dark btn-sm" type="submit">Filter</button>
             </div>
         </div>
@@ -33,7 +41,7 @@
 
     <div class="card">
         <div class="table-responsive">
-            <table class="table table-striped table-hover align-middle mb-0">
+            <table class="table-striped table-hover mb-0 table align-middle">
                 <thead class="table-light">
                     <tr>
                         <th>Return No</th>
@@ -48,12 +56,14 @@
                     @forelse ($rows as $row)
                         <tr>
                             <td class="fw-semibold">
-                                <a class="link-dark"
-                                    href="{{ route('sales-returns.show', $row) }}">{{ $row->return_number }}</a>
+                                <a
+                                    class="link-dark"
+                                    href="{{ route('sales-returns.show', $row) }}"
+                                >{{ $row->return_number }}</a>
                             </td>
                             <td>
-                                <a class="link-dark"
-                                    href="{{ route('invoices.show', $row->invoice) }}">#{{ $row->invoice_id }}</a>
+                                <a class="link-dark" href="{{ route('invoices.show', $row->invoice) }}"
+                                    >#{{ $row->invoice_id }}</a>
                             </td>
                             <td>{{ $row->invoice->customer_name ?? '-' }}</td>
                             <td>{{ $row->return_date->format('Y-m-d H:i') }}</td>
@@ -62,7 +72,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td class="text-center text-secondary py-5" colspan="5">No returns found.</td>
+                            <td class="text-secondary py-5 text-center" colspan="5">No returns found.</td>
                         </tr>
                     @endforelse
                 </tbody>
